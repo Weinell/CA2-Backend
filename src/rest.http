@@ -1,2 +1,12 @@
-POST http://localhost:8080/devops_starter_war_exploded/api/info/user
-application
+POST http://localhost:8080/devops_starter_war_exploded/api/login
+application/json
+{"username":"user","password":"MyPassword"}
+
+###
+
+GET http://lazzoro.dk/devops-starter/api/login
+
+
+###
+
+GET http://lazzoro.dk/devops-starter/api/login
