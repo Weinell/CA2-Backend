@@ -11,8 +11,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 //Todo Remove or change relevant parts before ACTUAL use
-@Path("entertainment")
-public class RenameMeResource {
+@Path("joke")
+public class JokeResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
        
@@ -22,16 +22,16 @@ public class RenameMeResource {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String demo() {
-        return "{\"msg\":\"Hello World\"}";
+        return "{\"msg\":\"This is a funny joke\"}";
     }
-    @Path("joke")
+    @Path("all")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public String getJoke() {
+    public String getAllJoke() {
        
         long count = FACADE.getRenameMeCount();
         //System.out.println("--------------->"+count);
         return "{\"count\":"+count+"}";  //Done manually so no need for a DTO
     }
-    
+
 }
