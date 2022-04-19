@@ -2,7 +2,6 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import facades.FacadeExample;
 import facades.JokeFacade;
 import utils.EMF_Creator;
 import utils.HttpUtils;
@@ -28,7 +27,7 @@ public class JokeResource {
     public String demo() {
         return "{\"msg\":\"This is a funny joke\"}";
     }
-    @Path("all")
+    @Path("rand")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String getAllJoke() throws IOException {
