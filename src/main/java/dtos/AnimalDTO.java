@@ -1,7 +1,7 @@
 package dtos;
 
 public class AnimalDTO {
-    private String animalName;
+    private String name;
 
     public AnimalDTO() {}
 }
