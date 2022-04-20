@@ -21,6 +21,7 @@ public class SetupTestUsers {
     // Whatever you do DO NOT COMMIT and PUSH with the real passwords
 
     User user = new User("user", "MyPassword");
+    User user2 = new User("lazzoro", "MyPassword");
     User admin = new User("admin", "MyPassword");
     User both = new User("user_admin", "MyPassword");
 
@@ -31,18 +32,21 @@ public class SetupTestUsers {
     Role userRole = new Role("user");
     Role adminRole = new Role("admin");
     user.addRole(userRole);
+    user2.addRole(userRole);
     admin.addRole(adminRole);
     both.addRole(userRole);
     both.addRole(adminRole);
     em.persist(userRole);
     em.persist(adminRole);
     em.persist(user);
+    em.persist(user2);
     em.persist(admin);
     em.persist(both);
     em.getTransaction().commit();
     System.out.println("PW: " + user.getUserPass());
     System.out.println("Testing user with OK password: " + user.verifyPassword("MyPassword"));
-    System.out.println("Testing user with wrong password: " + user.verifyPassword("MyPassword"));
+    System.out.println("Testing user with wrong password: " + user.verifyPassword("asdf"));
+    System.out.println("Testing user with wrong password: " + user2.verifyPassword("asdf"));
     System.out.println("Created TEST Users");
    
   }
