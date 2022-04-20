@@ -1,6 +1,6 @@
 package facades;
 
-import dtos.AnimalJokeDTO;
+import dtos.JokeAnimalDTO;
 import endpoints.Endpoints;
 
 import java.util.ArrayList;
@@ -24,32 +24,25 @@ public class HomeFacade {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         HomeFacade facade = new HomeFacade();
-        facade.getAnimalJokeDTO();
+        facade.getJokeAnimalDTO();
     }
 
 
-    public AnimalJokeDTO getAnimalJokeDTO() throws ExecutionException, InterruptedException {
+
+
+    public JokeAnimalDTO getJokeAnimalDTO() throws ExecutionException, InterruptedException {
         String[] urls = Endpoints.getEndpointList();
         List<String> results = new ArrayList<>();
         ExecutorService es = Executors.newCachedThreadPool();
 
-        // We make a list of futures, since they fetch on their own thread.
-        List<Future<String>> futures = new ArrayList<>();
         for (int i = 0; i < urls.length; i++) {
-            Future<String> fut = es.submit(new PingURL(urls[i]));
-            futures.add(fut);
-        }
-
-        // Loops through all fetched futures.
-        // Each are blocking the loop until they finish fetching,
-        // so some futures later down the loop CAN finish before the others
-        for(Future<String> future : futures) {
+            Future<String> future = es.submit(new PingURL(urls[i]));
             String response = future.get();
             results.add(response);
-
-            System.out.println(response);
         }
 
-        return null;
+        JokeAnimalDTO dto = new JokeAnimalDTO(results.get(0), results.get(1));
+        es.shutdown();
+        return dto;
     }
 }
