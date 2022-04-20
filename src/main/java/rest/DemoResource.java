@@ -10,11 +10,8 @@ import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
-import javax.ws.rs.POST;
+import javax.ws.rs.*;
 import javax.ws.rs.core.*;
-import javax.ws.rs.Produces;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
 
 import facades.UserFacade;
 import utils.EMF_Creator;
@@ -77,6 +74,7 @@ public class DemoResource {
     @POST
     @Path("create")
     @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public void createUser(String content) {
         UserFacade facade = UserFacade.getUserFacade(EMF);
         facade.createUser(GSON.fromJson(content, UserDTO.class));
