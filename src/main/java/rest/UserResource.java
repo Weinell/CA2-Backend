@@ -13,6 +13,7 @@ import javax.persistence.TypedQuery;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
+import facades.SetupTestUsersFacade;
 import facades.UserFacade;
 import utils.EMF_Creator;
 
@@ -20,7 +21,7 @@ import utils.EMF_Creator;
  * @author lam@cphbusiness.dk
  */
 @Path("info")
-public class DemoResource {
+public class UserResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
     private static Gson GSON = new GsonBuilder().create();
@@ -82,5 +83,14 @@ public class DemoResource {
         return Response
                 .ok()
                 .build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("populate")
+    public String populateDatabase() {
+        SetupTestUsersFacade facade = new SetupTestUsersFacade();
+        facade.Populate();
+        return "{\"msg\": \"Populated database\"}";
     }
 }
