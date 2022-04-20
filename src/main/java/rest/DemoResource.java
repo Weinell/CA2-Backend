@@ -75,8 +75,12 @@ public class DemoResource {
     @Path("create")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public void createUser(String content) {
+    public Response createUser(String content) {
         UserFacade facade = UserFacade.getUserFacade(EMF);
         facade.createUser(GSON.fromJson(content, UserDTO.class));
+
+        return Response
+                .ok()
+                .build();
     }
 }
