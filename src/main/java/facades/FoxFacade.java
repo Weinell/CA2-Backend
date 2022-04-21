@@ -12,7 +12,7 @@ public class FoxFacade {
     private static final Gson gson = new GsonBuilder().create();
 
 
-    public JokeDTO getRandomJoke() throws IOException {
+    public JokeDTO getRandomFox() throws IOException {
 
         String json = HttpUtils.fetchData("https://randomfox.ca/floof/?ref=apilist.fun");
 
