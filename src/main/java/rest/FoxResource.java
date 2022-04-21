@@ -20,7 +20,7 @@ public class FoxResource {
 
     private static final FoxFacade FACADE =  new FoxFacade();
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
- 
+
     @Path("rand")
     @GET
     @Produces({MediaType.APPLICATION_JSON})

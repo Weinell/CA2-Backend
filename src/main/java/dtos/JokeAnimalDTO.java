@@ -7,13 +7,16 @@ public class JokeAnimalDTO {
     private JsonObject jokeObj;
     private JsonObject animalObj;
 
-    public JokeAnimalDTO(String joke, String animal) {
+    private JsonObject foxObj;
+
+    public JokeAnimalDTO(String joke, String animal, String fox) {
         this.jokeObj = new Gson().fromJson(joke, JsonObject.class);
         this.animalObj = new Gson().fromJson(animal, JsonObject.class);
+        this.foxObj = new Gson().fromJson(fox, JsonObject.class);
     }
 
     @Override
     public String toString() {
-        return "JokeAnimalDTO{" + "joke=" + jokeObj.get("value").toString() + ", animal=" + animalObj.get("name").toString() + '}';
+        return "JokeAnimalDTO{" + "joke=" + jokeObj.get("value").toString() + ", animal=" + animalObj.get("name").toString() + ", fox=" + foxObj.get("image").toString() + '}';
     }
 }
