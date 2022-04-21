@@ -9,8 +9,7 @@ import javax.persistence.EntityManagerFactory;
 
 public class SetupTestUsersFacade {
 
-    public void Populate() {
-        EntityManagerFactory emf = EMF_Creator.createEntityManagerFactory();
+    public void Populate(EntityManagerFactory emf) {
         EntityManager em = emf.createEntityManager();
 
         // IMPORTAAAAAAAAAANT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

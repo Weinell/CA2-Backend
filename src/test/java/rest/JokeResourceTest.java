@@ -65,11 +65,6 @@ public class JokeResourceTest {
     }
 
     @Test
-    public void serverIsRunning() {
-        given().when().get("/info").then().statusCode(200);
-    }
-
-    @Test
     public void testGetRandomJoke() {
         given()
                 .when()

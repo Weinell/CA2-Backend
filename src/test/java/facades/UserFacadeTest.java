@@ -20,22 +20,21 @@ public class UserFacadeTest {
 
     @BeforeAll
     static void SetupClass() {
-        emf = EMF_Creator.createEntityManagerFactory();
+        emf = EMF_Creator.createEntityManagerFactoryForTest();
     }
 
     @BeforeEach
     void setup() {
-        EntityManagerFactory emf = EMF_Creator.createEntityManagerFactory();
         EntityManager em = emf.createEntityManager();
 
         em.getTransaction().begin();
-        em.createQuery("delete from Role", Role.class).executeUpdate();
-        em.createQuery("delete from User", User.class).executeUpdate();
+        em.createQuery("delete from Role").executeUpdate();
+        em.createQuery("delete from User").executeUpdate();
         em.getTransaction().commit();
         em.close();
 
         SetupTestUsersFacade setupTestUsersFacade = new SetupTestUsersFacade();
-        setupTestUsersFacade.Populate();
+        setupTestUsersFacade.Populate(emf);
     }
 
     @Test

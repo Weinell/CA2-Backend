@@ -90,7 +90,7 @@ public class UserResource {
     @Path("populate")
     public String populateDatabase() {
         SetupTestUsersFacade facade = new SetupTestUsersFacade();
-        facade.Populate();
+        facade.Populate(EMF);
         return "{\"msg\": \"Populated database\"}";
     }
 }
