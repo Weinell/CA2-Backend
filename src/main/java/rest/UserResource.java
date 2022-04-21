@@ -93,4 +93,16 @@ public class UserResource {
         facade.Populate(EMF);
         return "{\"msg\": \"Populated database\"}";
     }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("like")
+    @RolesAllowed("user")
+    public Response incrementUserLike() {
+        String username = securityContext.getUserPrincipal().getName();
+        UserFacade facade = UserFacade.getUserFacade(EMF);
+        facade.userIncrementLikes(username);
+
+        return Response.ok().build();
+    }
 }

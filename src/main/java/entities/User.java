@@ -52,6 +52,22 @@ public class User implements Serializable {
         return(BCrypt.checkpw(pw, userPass));
     }
 
+  public Like getLike() {
+    return like;
+  }
+
+  public void setLike(Like like) {
+    this.like = like;
+  }
+
+  public Dislike getDislike() {
+    return dislike;
+  }
+
+  public void setDislike(Dislike dislike) {
+    this.dislike = dislike;
+  }
+
   public User(String userName, String userPass) {
     this.userName = userName;
     this.userPass = BCrypt.hashpw(userPass, BCrypt.gensalt());

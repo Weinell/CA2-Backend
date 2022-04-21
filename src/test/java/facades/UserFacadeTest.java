@@ -41,9 +41,7 @@ public class UserFacadeTest {
     void getVerifiedUser() throws AuthenticationException {
         UserFacade userFacade = UserFacade.getUserFacade(emf);
         User u = userFacade.getVeryfiedUser("user", "MyPassword");
-        User u2 = userFacade.getVeryfiedUser("admin", "MyPassword");
 
         assertNotNull(u);
-        assertNotNull(u2);
     }
 }

@@ -1,6 +1,7 @@
 package facades;
 
 import dtos.UserDTO;
+import entities.Like;
 import entities.Role;
 import entities.User;
 import javax.persistence.EntityManager;
@@ -61,6 +62,25 @@ public class UserFacade {
         try {
             em.getTransaction().begin();
             em.persist(user);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
+    public void userIncrementLikes(String username) {
+        EntityManager em = emf.createEntityManager();
+
+        User user = em.find(User.class, username);
+
+        Like like = user.getLike();
+        Long likes = like.getAmount();
+
+        like.setAmount(likes+1);
+
+        try {
+            em.getTransaction().begin();
+            em.merge(like);
             em.getTransaction().commit();
         } finally {
             em.close();
