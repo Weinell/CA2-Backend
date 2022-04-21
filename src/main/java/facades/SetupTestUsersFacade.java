@@ -1,5 +1,7 @@
 package facades;
 
+import entities.Dislike;
+import entities.Like;
 import entities.Role;
 import entities.User;
 import utils.EMF_Creator;
@@ -9,6 +11,11 @@ import javax.persistence.EntityManagerFactory;
 
 public class SetupTestUsersFacade {
 
+    public static void main(String[] args) {
+        EntityManagerFactory emf = EMF_Creator.createEntityManagerFactory();
+        SetupTestUsersFacade setupTestUsersFacade = new SetupTestUsersFacade();
+        setupTestUsersFacade.Populate(emf);
+    }
     public void Populate(EntityManagerFactory emf) {
         EntityManager em = emf.createEntityManager();
 
