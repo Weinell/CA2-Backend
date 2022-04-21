@@ -41,7 +41,7 @@ public class HomeFacade {
             results.add(response);
         }
 
-        JokeAnimalDTO dto = new JokeAnimalDTO(results.get(0), results.get(1));
+        JokeAnimalDTO dto = new JokeAnimalDTO(results.get(0), results.get(1), results.get(2));
         es.shutdown();
         return dto;
     }
