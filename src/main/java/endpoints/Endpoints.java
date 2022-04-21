@@ -19,7 +19,8 @@ public class Endpoints {
 
   private static String[] endpointList = {
     "https://lazzoro.dk/ca2/api/joke/rand",
-    "https://lazzoro.dk/ca2/api/animal/rand"
+    "https://lazzoro.dk/ca2/api/animal/rand",
+          "https://randomfox.ca/floof/?ref=apilist.fun"
   };
   
   //Public so URL's can be reused in the parallel part
